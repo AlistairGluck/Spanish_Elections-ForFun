@@ -38,7 +38,14 @@ good_firms <- x %>%
 
 x %>% 
   filter(firm %in% good_firms) %>% 
+  select(-n, -source, -sd, -firm) %>% 
   filter(date > Sys.Date() - 365) %>%
-  gather(x, key = c("PSOE", "PP", "Cs", "Podemos", "VOX"), value = ""
+  gather(key = "party", value = "poll", PP:PDeCAT) %>% 
+  filter(party %in% c("PSOE", "PP", "Cs", "Podemos", "VOX")) %>% 
+  filter(poll != "NA") %>%
+  group_by(party) %>% 
+  ggplot(aes(x = date, y = poll, color = party)) + 
+  geom_smooth(se = FALSE) + 
+  geom_point()
   
 ```
