@@ -45,7 +45,7 @@ x %>%
   filter(poll != "NA") %>%
   group_by(party) %>% 
   ggplot(aes(x = date, y = poll, color = party)) + 
-  geom_smooth(se = FALSE) + 
-  geom_point()
+  geom_smooth(se = FALSE, show.legend = FALSE) + 
+  geom_point(se = FALSE, show.legend = FALSE)
   
 ```
