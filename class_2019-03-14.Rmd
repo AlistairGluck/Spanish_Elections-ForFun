@@ -18,7 +18,7 @@ output: html_document
 
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
-
+library(devtools)
 x <- read_csv("https://pollofpolls.eu/get/polls/ES-parliament/format/csv")
 ```
 
@@ -38,6 +38,7 @@ good_firms <- x %>%
 
 x %>% 
   filter(firm %in% good_firms) %>% 
-  filter(date > Sys.Date() - 365)
+  filter(date > Sys.Date() - 365) %>%
+  gather(x, key = c("PSOE", "PP", "Cs", "Podemos", "VOX"), value = ""
   
 ```
